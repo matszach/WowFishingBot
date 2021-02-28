@@ -1,0 +1,51 @@
+{
+    "meta": {
+        "wowWindowName": "World of Warcraft"
+    },
+    "keys": {
+        "castRod": "=",
+        "lureMacro": "0"
+    },
+    "bobberRGB": {
+        "red": {
+            "min": 40,
+            "max": 80
+        },
+        "green": {
+            "min": 10,
+            "max": 30
+        },
+        "blue": {
+            "min": 0,
+            "max": 20
+        }
+    },
+    "fishingAreaMargin": {
+        "left": 500,
+        "top": 0,
+        "right": 500,
+        "bottom": 500
+    },
+    "collection": {
+        "minTicks": 5,
+        "threshold": {
+            "red": 2,
+            "green": 2,
+            "blue": 2 
+        }
+    },
+    "debug": {
+        "outputCheckedArea": false,
+        "outlineBobberBox": false,
+        "dontCollect": false,
+        "printRGBDeviations": true
+    },
+    "misc": {
+        "ignoreFirstLureApply": false,
+        "useLureMacro": false,
+        "lureMacroInterval": 650
+    },
+	"performance": {
+		"maxTicksPerLure": 750
+	}
+}
