@@ -1,9 +1,7 @@
 import pyautogui
 from win32 import win32gui
-import numpy
 import time
 from PIL import ImageGrab
-import sys
 import json
 from random import random
 
