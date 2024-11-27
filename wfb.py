@@ -3,6 +3,7 @@ from win32 import win32gui
 import time
 from PIL import ImageGrab
 import json
+import os
 from random import random
 
 
@@ -10,6 +11,10 @@ from random import random
 with open('./config.json') as f:
 	config = json.loads(f.read())
 
+if os.path.exists('./overrides.json'):
+	with open('./overrides.json') as f:
+		override = json.loads(f.read())
+		config = {**config, **override}
 
 # =========================================== runtime variables ===========================================
 vars = {
@@ -69,12 +74,14 @@ def find_bobber(window):
 	return 0, 0, False
 
 def match_rgb(r, g, b):
-	min_r = config['bobberRGB']['red']['min']
-	max_r = config['bobberRGB']['red']['max']
-	min_g = config['bobberRGB']['green']['min']
-	max_g = config['bobberRGB']['green']['max']
-	min_b = config['bobberRGB']['blue']['min']
-	max_b = config['bobberRGB']['blue']['max']
+	[tr, tg, tb] = config['bobberRGB']['values']
+	offset = config['bobberRGB']['offset']
+	min_r = tr - offset
+	max_r = tr + offset
+	min_g = tg - offset
+	max_g = tg + offset
+	min_b = tb - offset
+	max_b = tb + offset
 	return (min_r <= r <= max_r and min_g <= g <= max_g and min_b <= b <= max_b)
 
 def rng(base, variation):
@@ -146,9 +153,9 @@ def check_for_bite(r, g, b):
 	match = (
 		n > config['collection']['minTicks'] and 
 		(
-			dR > config['collection']['threshold']['red'] or 
-			dG > config['collection']['threshold']['green'] or 
-			dB > config['collection']['threshold']['blue']
+			dR > config['collection']['threshold'] or
+			dG > config['collection']['threshold'] or
+			dB > config['collection']['threshold']
 		)
 	)
 	if config['debug']['printRGBDeviations']:

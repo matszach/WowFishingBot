@@ -7,7 +7,7 @@
         "lureMacro": "="
     },
     "bobberRGB": {
-        "values": [100, 30, 20],
+        "values": [68, 19, 14],
         "offset": 20
     },
     "fishingAreaMargin": {
@@ -18,7 +18,7 @@
     },
     "collection": {
         "minTicks": 5,
-        "threshold": 2.0
+        "threshold": 2.2
     },
     "debug": {
         "outputCheckedArea": false,
